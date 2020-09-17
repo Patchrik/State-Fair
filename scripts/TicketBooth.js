@@ -2,7 +2,7 @@ const contentTarget = document.querySelector('.entry');
 const eventHub = document.querySelector('#state-fair');
 
 eventHub.addEventListener('click', (clickEvt) => {
-	if (clickEvt.target.id.startsWith('rideTicket')) {
+	if (clickEvt.target.id.startsWith('ride')) {
 		const rideEvent = new CustomEvent('rideTicketPurchased', {
 			detail: {
 				Athing: 'Something',
@@ -13,16 +13,23 @@ eventHub.addEventListener('click', (clickEvt) => {
 });
 
 eventHub.addEventListener('click', (clickEvent) => {
-	if (clickEvent.target.id.startsWith('foodTicket')) {
+	if (clickEvent.target.id.startsWith('food')) {
 		const foodEvent = new CustomEvent('foodTicketPurchased', {});
 		eventHub.dispatchEvent(foodEvent);
 	}
 });
 
 eventHub.addEventListener('click', (e) => {
-	if (e.target.id.startsWith('gameTicket')) {
+	if (e.target.id.startsWith('game')) {
 		const gameEvent = new CustomEvent('gameTicketPurchased', {});
 		eventHub.dispatchEvent(gameEvent);
+	}
+});
+
+eventHub.addEventListener('click', (clickEvent) => {
+	if (clickEvent.target.id.startsWith('side')) {
+		const sideshowEvent = new CustomEvent('sideshowTicketPurchased', {});
+		eventHub.dispatchEvent(sideshowEvent);
 	}
 });
 
@@ -32,6 +39,7 @@ export const TicketBooth = () => {
 						<button id="rideTicket">Ride Ticket</button>
 						<button id="foodTicket">Food Ticket</button>
 						<button id="gameTicket">Game Ticket</button>
+						<button id="sideshowTicket">Sideshow Ticket</button>
         </div>
     `;
 };
